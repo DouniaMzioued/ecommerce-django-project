@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock title%}
+
+{% block content %}
+
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static '../static/style.css' %}">
+
+<main class="container my-4">
+<h3 class="my-4 border-bottom pb-1">My Orders</h3>
+  <div class="row">
+    <div class="md-3">
+      <div class="list-group">
+      <a href="" class="text-secondary list-group-item">Orders</a>
+      <a href="" class="text-secondary list-group-item">Edit Profile</a>
+      <a href="store/logout" class="text-danger list-group-item">Log Out</a>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Order No</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Order Date</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for order in orders %}
+    <tr>
+      <th scope="row">{{order.id}}</th>
+      <td>{{order.totalPrice}}</td>
+      <td>{{order.OrderDate}}</td>
+      <td>{{order.status}}</td>
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+    </div>
+  </div>
+</main>
+{% endblock %}

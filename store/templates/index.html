@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static '../static/style.css' %}">
+
+	<div class="container">
+		<h3 class="text-center" style="margin-top: 50px;">TREANDLY PRODUCTS</h3>
+		<div class="row" style="margin-top: 50px;">
+			{% for prod in produits %}
+				<!-- card3 -->
+				<div class="col-md-3 py-3 py-md-0">
+					<div class="card" id="c">
+						<img src="{{prod.image}}" alt="{{prod.name}}" class="card image-top">
+						<div class="card-body">
+							<h3 class="card-titel text-center">{{prod.name}}</h3>
+							<p class="card-text text-center">{{prod.price}}</p>
+							<div id="btn3">
+								<a href="{% url 'store:detail' prod.id %}"><button >Details</button></a>
+								<button>Shop Now</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	{% endblock %}

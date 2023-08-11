@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% comment %} {% block content %}
+
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static '../static/style.css' %}"> {% endcomment %}
+{% block title %}Product Details{% endblock title%}
+{% block content %}
+{% comment %} <h1>{{ produit.name }}</h1>
+<p>This is some content.</p> {% endcomment %}
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-6 text-center align self-center">
+      <img src="{{produit.image}}" alt="" class="img-fluid img-thumbnail">
+    </div>
+    <div class="col-sm-5 offset-sm-1">
+      <h1>{{ produit.name }}</h1>
+      <hr>
+      <p>Description: {{ produit.description }}</p>
+      <h4>{{ produit.price }} DH</h4>
+        {% if request.session %}
+        {% if item_already_in_cart %}
+        <a href="store/showCart/" class="btn btn-warning shadow px-5 py-2 ms-4">Go to Cart</a>
+
+        {% else %}
+
+
+      <form action="/store/addToCart" class="btn-block">
+        {% csrf_token %}
+        <input type="hidden" name="prod_id" value="{{ produit.id }}" id="prod_id"/>
+        <button type="submit" class="btn shadow px-5 py-2 ms-4 "> Add to Cart </button>
+      </form>
+      {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock title%}
+
+{% block content %}
+
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static '../static/style.css' %}">
+
+
+  <div class="container ">
+    <div class="border rounder p-4 m-4 ">
+    <p class="display-4 pl-4 ml-4">My Cart</p>
+    <hr/>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">image</th>
+      <th scope="col">name</th>
+      <th scope="col">qte</th>
+      <th scope="col">price</th>
+      <th scope="col"></th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for cart in cart %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td><img style="height: 80px; " class="rounded-circle" src="{{cart.produit.image}}" alt=""></td>
+      <td>{{cart.produit.name}}</td>
+      <td>{{cart.quantity}}</td>
+      <td>{{cart.produit.price}} DH</td>
+     
+{% comment %} 
+
+      <td><input type="button" class="minus-cart btn" value="-"></td>
+      <td><span id="quantity">{{cart.quantity}}</span></td>
+      <td><input type="button" class="plus-cart btn" value="+"></td> 
+      <td><input type="button" class="btn btn-danger btn-sm remove-cart" value="Delete"></td>{% endcomment %}
+
+    </tr>
+   
+  
+  </tbody>
+  
+  {% endfor %}
+</table>
+
+  <hr>
+<!-- Button trigger modal -->
+        <div class="m-3 p-3">
+         <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-dark border rounded col-lg-3 float-right">Check Out</a>
+        </div>
+    </div>
+  </div>
+{% comment %} checkout  {% endcomment %}
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Check Out</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form action="store/checkout" method="Post">
+        {% csrf_token %}
+          <div class="form-group mt-3">
+            <label>Name</label>
+            <input required type="text" name="name" id="name" class="form-control" placeholder="Enter Your Name">
+          
+          </div>
+          <div class="form-group mt-3">
+            <label>Shipping Adress</label>
+            <input required type="text" name="adress" id="adress" class="form-control" placeholder="Enter Your Shipping Adress">
+          
+          </div>
+          <div class="form-group mt-3">
+            <label>Phone</label>
+            <input required type="text" name="phone" id="phone" class="form-control" placeholder="Enter Your Phone">
+          
+          </div>
+       <input type="submit" class="btn btn-outline-dark border rounded col-lg-4 float-left" value="Make Payment">
+
+       </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

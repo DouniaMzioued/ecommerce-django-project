@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% block  content%}
+<style>
+    .errorlist{
+        color: red;
+    }
+</style>
+
+
+        <section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+      
+        <img src="https://i.pinimg.com/originals/6b/72/6b/6b726b91cb6bc3e7b163e867195bbcc1.jpg"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <h3 style="text-align:center">Customer Registration Form</h3><hr>
+            <h6>Bonjour</h6>
+        <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+         {% comment %} to display it one under one {% endcomment %}
+            <button class="btn ">Register as a Customer</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  
+</section>
+    
+{% endblock %}
+{% comment %} <div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h3>Customer Registration Form</h3><hr>
+            <h6>Bonjour</h6>
+            <form method="POST">{% csrf_token %}
+            {{form.as_p}} 
+            {% comment %} to display it one under one {% endcomment %}
+            {% comment %} <button class="btn btn-primary">Register as a Customer</button>
+            </form>
+            <p> Already have an account? <a href="">Login here</a></p>
+        </div>
+    </div>
+</div> {% endcomment %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block home %}
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+	{% csrf_token %}
+	<!-- Home Section Start -->
+	<div class="main-content">
+		<div class="content">
+			<h1>Make Your Home
+				<br>
+				Modern Design.
+			</h1>
+			<p>"Transform Your Home into a Stylish Haven with Our Exquisite Furniture Collection"
+			</p>
+			<div id="btn1">
+				<a href="store/produits"><button >Shop Now</button></a>
+			</div>
+		</div>
+	</div>
+	<!-- Home Section End -->
+
+
+	<!-- card1 -->
+	<div class="container">
+		<h3 class="text-center" style="padding-top: 30px;">SERVICES WE OFFER</h3>
+		<div class="row" style="margin-top: 50px;">
+			<div class="col-md-4 py-3 py-md-0">
+				<div class="card">
+					<img src=".././static/image/c1.png" alt="" class="card image-top" height="200px">
+					<div class="card-body">
+						<h5 class="card-titel text-center">You choose</h5>
+						<p class="text-center">you choose the design and color you want and we will make it for u </p>
+						<div id="btn2" class="text-center">
+							<button>View More</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 py-3 py-md-0">
+				<div class="card">
+					<img src=".././static/image/c2.png" alt="" class="card image-top" height="200px">
+					<div class="card-body">
+						<h5 class="card-titel text-center">wherever you </h5>
+						<p class="text-center">we deliver ur commande wherever you are </p>
+						<div id="btn2" class="text-center">
+							<button>View More</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 py-3 py-md-0">
+				<div class="card">
+					<img src=".././static/image/c3.png" alt="" class="card image-top" height="200px">
+					<div class="card-body">
+						<h5 class="card-titel text-center">good quality</h5>
+						<p class="text-center">our products are made with good quality fabrics </p>
+						<div id="btn2" class="text-center">
+							<button>View More</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- card1 -->
+	<!-- main content -->
+	<div class="container">
+		<h3 class="text-center" style="margin-top: 50px;">TREANDLY PRODUCTS</h3>
+		<div class="row" style="margin-top: 50px;">
+			{% for prod in produits %}
+				<!-- card3 -->
+				<div class="col-md-3 py-3 py-md-0">
+					<div class="card" id="c">
+						<img src="{{prod.image}}" alt="{{prod.name}}" class="card image-top">
+						<div class="card-body">
+							<h3 class="card-titel text-center">{{prod.name}}</h3>
+							<p class="card-text text-center">{{prod.price}}</p>
+							<div id="btn3">
+								<button>Shop Now</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<!-- about -->
+		<div class="container">
+			<h1 class="text-center" style="margin-top: 50px;">ABOUT</h1>
+			<div class="row" style="margin-top: 50px;">
+				<div class="col-md-6 py-3 py-md-0">
+					<div class="card">
+						<img src="https://c1.wallpaperflare.com/preview/566/326/564/vintage-interior-home-old.jpg" alt="">
+					</div>
+				</div>
+				<div class="col-md-6 py-3 py-md-0">
+					<p>Our furniture brand is dedicated to providing high-quality and stylish home furnishing solutions for customers who care about both aesthetics and function. We believe that furniture should not only be beautiful but also comfortable and durable, which is why we pride ourselves on using only the finest materials and manufacturing processes.
+
+Our unique approach to design is informed by modern trends and classic styles, resulting in furniture that is both timeless and contemporary. Whether you're looking for a statement piece to anchor your living room or a functional storage solution for your bedroom, our furniture has you covered.
+
+We understand that buying furniture can be a big investment, which is why we offer a variety of styles and price points to cater to every budget and taste. No matter what your needs are, you can trust us to provide you with quality, affordable furniture that will last for years to come.
+
+At our brand, we're committed to delivering exceptional customer service and making sure our clients are satisfied with their purchases. We believe that everyone deserves a beautiful and comfortable home, and we're proud to be a part of that journey.</p>
+					
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}
